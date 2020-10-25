@@ -97,4 +97,11 @@ while True:
         ball.goto(0,0)
         ball.dx = ball.dx * (-1)
 
-    # Colision betewen Ball and Player 
+    # Collision between  Player and ball
+    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < player_b.ycor() + 40 and ball.ycor() > player_b.ycor() - 40):
+        ball.setx(340)
+        ball.dx = ball.dx * (-1)
+
+    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < player_a.ycor() + 40 and ball.ycor() > player_a.ycor() - 40):
+        ball.setx(-340)
+        ball.dx = ball.dx * (-1)
