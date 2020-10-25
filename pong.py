@@ -1,5 +1,4 @@
 import turtle
-import os
 
 #creating the window
 
