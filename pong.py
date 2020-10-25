@@ -1,4 +1,5 @@
 import turtle
+import os
 
 #creating the window
 
@@ -38,19 +39,34 @@ ball.penup()
 ball.goto(0,0)
 
 ball.dx = 1
-ball.dy = 1
+ball.dy = -1
+
+# pen
+pen = turtle.Turtle()
+pen.speed(0)
+pen.penup()
+pen.color("white")
+pen.hideturtle()
+pen.goto(0,260)
+pen.write("Player A: 0 Player B: 0", align="center", font=("Courier", 24, "bold"))
+
+# score
+score_a = 0
+score_b = 0
+
+
 
 
 
 # Functions
 def player_a_up():
     y = player_a.ycor()
-    y = y + 15
+    y = y + 20
     player_a.sety(y)
 
 def player_a_down():
     y = player_a.ycor()
-    y = y - 15
+    y = y - 20
     player_a.sety(y)
 
 def player_b_up():
@@ -92,10 +108,16 @@ while True:
     if ball.xcor() > 390:
         ball.goto(0,0)
         ball.dx = ball.dx * (-1)
+        score_a += 1
+        pen.clear()
+        pen.write(f"Player A: {score_a} Player B: {score_b}", align="center", font=("Courier", 24, "bold"))
 
     if ball.xcor() < -390:
         ball.goto(0,0)
         ball.dx = ball.dx * (-1)
+        score_b +=1
+        pen.clear()
+        pen.write(f"Player A: {score_a} Player B: {score_b}", align="center", font=("Courier", 24, "bold"))
 
     # Collision between  Player and ball
     if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < player_b.ycor() + 40 and ball.ycor() > player_b.ycor() - 40):
